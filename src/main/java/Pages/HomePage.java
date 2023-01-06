@@ -1,32 +1,74 @@
 package Pages;
 
+import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.microsoft.playwright.TimeoutError;
+import com.microsoft.playwright.options.AriaRole;
 
-public class HomePage {
-    private Page page;
+public class LoginPage {
+    public Page page;
+
 
     // 1. String Locators - OR
-    String pageTitle = "id=style_content_logo__pkvMP";
+    String pageTitlelogin = "text=Connexion";
+    String emailUser = "id=email_login";
+    String password = "id=password_login";
+    String clickLogin = "id=btn_login";
+    String confirmationLogin = "id=style_content_logo__pkvMP";
+    String failedLogin = "text=Email ou mot de passe incorrect";
+    String pageTitleHome = "id=style_content_logo__pkvMP";
     String searchBar = "id=style_input_navbar_search__Scaxy";
-    String addproduct01 = "text=Ampoule Vecteur Incandescent30.99 € T-shirt en coton biologique8.99 € Chaussures >> span >> :nth-match(img, 2)";
     String verifyproduct = "text=Votre panier à été mis à jour";
     String handle_mouse = "id=style_avatar_wrapper__pEGIQ";
     String logout_bouton = "text=Se déconnecter";
-    String failSearch = "id=style_empty_result___y6P_";
-    String searchResult = "#style_popular_product_wrapper__z6J0h div div";
+
+    public String searchResult = ".style_card__gNEqX";
 
 
     // 2. page constructor:
-    public HomePage(Page page) {
+    public LoginPage(Page page) {
         this.page = page;
     }
 
     // 3. page actions/methods:
-    public String getHomePageTitle() {
-        String title =  page.textContent(pageTitle);
+    public String getLoginPageTitle() {
+        String title =  page.textContent(pageTitlelogin);
         System.out.println("page title: " + title);
         return title;
     }
+
+    public boolean isForgotPwdLinkExist() {
+        return page.isVisible(failedLogin);
+    }
+
+    public boolean doLogin(String appUserName, String appPassword) {
+        System.out.println("App creds: " + appUserName + ":" + appPassword);
+        page.fill(emailUser, appUserName);
+        page.fill(password, appPassword);
+        page.click(clickLogin);
+        page.locator(confirmationLogin).waitFor();
+        if(page.locator(confirmationLogin).isVisible()) {
+            System.out.println("user is logged in successfully....");
+            return true;
+        }else {
+            System.out.println("user is not logged in successfully....");
+            return false;
+        }
+    }
+
+
+
+
+
+
+
+    public String getHomePageTitle() {
+        String title =  page.textContent(pageTitleHome);
+        System.out.println("page title: " + title);
+        return title;
+    }
+
+
 
     public String getHomePageURL() {
         String url =  page.url();
@@ -34,17 +76,26 @@ public class HomePage {
         return url;
     }
 
-    public boolean doSearch(String productName) {
-        page.waitForTimeout(10000);
+    public String doSearch(String productName) {
+        page.waitForTimeout(1000);
         page.fill(searchBar, productName);
-        page.locator(searchResult).waitFor();
-        if(page.locator(searchResult).isVisible()) {
-            System.out.println("the research was successful....");
-            return true;
-        }else {
-            System.out.println("the search has failed....");
-            return false;
+        return productName;
+    }
+    public String getResultSearch(int x, String searchedTerms) {
+        Locator p = page.locator(searchResult)
+                .filter(new Locator.FilterOptions().setHasText(searchedTerms)).nth(x);
+        try {
+            p.waitFor(new Locator.WaitForOptions().setTimeout(15000));
+        } catch (TimeoutError e) {
+            System.out.println("Timeout pour le résultat de la recherche!");
         }
+        if(page.isVisible("text=Aucun produit trouvé"))
+            return ("Aucun_produit_trouvé");
+        else if (p.isVisible()) {
+            return ("ok");
+        }
+        else
+            return ("not_ok");
     }
 
 
@@ -53,5 +104,6 @@ public class HomePage {
         page.click(logout_bouton);
         return new LoginPage(page);
     }
-}
 
+
+}

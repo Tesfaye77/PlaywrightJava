@@ -3,6 +3,9 @@ package Pages;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.TimeoutError;
+import org.testng.Assert;
+
+import java.util.regex.Pattern;
 
 public class HomePage {
     public Page page;
@@ -20,6 +23,13 @@ public class HomePage {
     String verifyproduct = "text=Votre panier à été mis à jour";
     String handle_mouse = "id=style_avatar_wrapper__pEGIQ";
     String logout_bouton = "text=Se déconnecter";
+
+    String addToCartBtn ="id=style_btn_add_cart__gTXM7";
+
+    String notifOfAdd = "text=Votre panier à été mis à jour";
+
+    String badgeOfAdd = "#style_content_cart_wrapper__mqNbf >> text=0";
+    String cartIcon = "id=style_content_cart_wrapper__mqNbf";
 
     public String searchResult = ".style_card__gNEqX";
 
@@ -54,11 +64,6 @@ public class HomePage {
             return false;
         }
     }
-
-
-
-
-
 
 
     public String getHomePageTitle() {
@@ -96,6 +101,111 @@ public class HomePage {
         else
             return ("not_ok");
     }
+
+
+    public void emptyTheCart() {
+        if (!page.isVisible(badgeOfAdd)){
+            try {
+                page.waitForSelector(cartIcon, new Page.WaitForSelectorOptions().setTimeout(15000));
+                page.click(cartIcon);
+                page.click("text=Vider le panier");
+            } catch (TimeoutError e) {
+                System.out.println("Timeout to empty the cart!");
+            }
+        }
+    }
+
+    public Boolean ClickOnAnArticle(String articleToAdd) {
+
+        try {
+            Locator p = page.locator(searchResult)
+                    .filter(new Locator.FilterOptions().setHasText(articleToAdd)).first();
+            p.waitFor(new Locator.WaitForOptions().setTimeout(15000));
+            p.click();
+            return true;
+        } catch (TimeoutError e) {
+            System.out.println("Timeout to click on article");
+            return false;
+        }
+
+    }
+
+    public void ClickOnAddToCart(int X) {
+
+
+        try {
+            page.waitForSelector(addToCartBtn, new Page.WaitForSelectorOptions().setTimeout(15000));
+            page.fill(".style_input_quantity__xZDIb",String.valueOf(X));
+            page.waitForLoadState();
+            page.click(addToCartBtn);
+        } catch (TimeoutError e) {
+            System.out.println("Timeout to click on article");
+        }
+    }
+
+    public Boolean VerifyArticleInCart(String productName) {
+
+        try {
+            page.click("#style_content_cart_wrapper__mqNbf > span");
+            String[] productNames = productName.split(" ");
+            Locator p = page.locator(".style_card__JLMp6")
+                    .filter(new Locator.FilterOptions().setHasText(Pattern.compile(productNames[0])));
+            p.waitFor();
+            return p.isVisible();
+        } catch (TimeoutError e) {
+            System.out.println("Timeout when looking in cart!");
+            return page.locator(".style_card__JLMp6")
+                    .filter(new Locator.FilterOptions().setHasText(Pattern.compile(productName))).isVisible();
+
+        }
+
+    }
+
+    public void DeleteFromCart(String s) throws InterruptedException {
+        try {
+
+            String[] productNames = s.split(" ");
+            Locator p = page.locator(".style_card__JLMp6")
+                    .filter(new Locator.FilterOptions().setHasText(Pattern.compile(productNames[0])));
+            p.locator(".style_quantity_dec__nm5ig").click(new Locator.ClickOptions().setTimeout(3000));
+        } catch (TimeoutError e) {
+            Assert.fail("Impossible de supprimer l'article");
+            System.out.println("Timeout to press on reduce button!");
+        }
+
+        page.waitForTimeout(3000);
+    }
+    public void ClickOnCartIcon() {
+        try {
+            page.waitForTimeout(2000);
+            page.waitForSelector(cartIcon, new Page.WaitForSelectorOptions().setTimeout(1500));
+            if(page.isVisible(cartIcon))
+                page.click(cartIcon, new Page.ClickOptions().setTimeout(100));
+        } catch (TimeoutError e) {
+            System.out.println("Timeout to press on cart icon!");
+        }
+    }
+
+
+    public Boolean VerifyArticleDeletion(String s) {
+        String[] productNames = s.split(" ");
+        Locator p = page.locator(".style_card__JLMp6")
+                .filter(new Locator.FilterOptions().setHasText(Pattern.compile(productNames[0])));
+        try {
+//            page.waitForSelector("class=style_card__gNEqX",new Page.WaitForSelectorOptions().setTimeout(15000));
+            p.waitFor(new Locator.WaitForOptions().setTimeout(2000));
+//            page.waitForSelector(searchResult, new Page.WaitForSelectorOptions().setTimeout(15000));
+        } catch (TimeoutError e) {
+            System.out.println("Timeout pour le résultat de la recherche!");
+        }
+        if(p.isVisible())
+            return (true);
+        else
+            return (false);
+
+    }
+
+
 
 
     public HomePage navigateToLoginPage() {

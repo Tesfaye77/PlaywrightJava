@@ -24,15 +24,13 @@ public class BaseTest {
     protected Properties prop;
 
     protected HomePage homePage;
-    Playwright playwright;
-    Browser browser;
+
 
 
     @Parameters({ "browser","username","password" })
     @BeforeTest
     public void setup(String browserName,String userName, String passWord) {
         pf = new PlaywrightFactory();
-
         prop = pf.init_prop();
 
         if (browserName != null) {

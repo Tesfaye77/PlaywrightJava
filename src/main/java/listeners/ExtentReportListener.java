@@ -27,7 +27,6 @@ public class ExtentReportListener implements ITestListener {
     public static ThreadLocal<ExtentTest> test = new ThreadLocal<ExtentTest>();
     private static ExtentReports extentReports;
 
-
     private static ExtentReports init() {
 
         Path path = Paths.get(OUTPUT_FOLDER);
@@ -43,13 +42,13 @@ public class ExtentReportListener implements ITestListener {
 
         extentReports = new ExtentReports();
         ExtentSparkReporter reporter = new ExtentSparkReporter(OUTPUT_FOLDER + FILE_NAME);
-        reporter.config().setReportName("Open Cart Automation Test Results");
+        reporter.config().setReportName("Z-TRAIN Automation Test Results");
         extentReports.attachReporter(reporter);
-        extentReports.setSystemInfo("System", "MAC");
-        extentReports.setSystemInfo("Author", "Naveen AutomationLabs");
-        extentReports.setSystemInfo("Build#", "1.1");
-        extentReports.setSystemInfo("Team", "OMS");
-        extentReports.setSystemInfo("Customer Name", "NAL");
+        extentReports.setSystemInfo("System", "Windows");
+        extentReports.setSystemInfo("Author", "Ulrich");
+        extentReports.setSystemInfo("Build#", "1.0");
+        extentReports.setSystemInfo("Team", "PAWK");
+        extentReports.setSystemInfo("Customer Name", "PAWK");
 
         //extentReports.setSystemInfo("ENV NAME", System.getProperty("env"));
 

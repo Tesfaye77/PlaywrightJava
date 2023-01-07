@@ -3,21 +3,26 @@ package tests;
 import base.BaseTest;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-import com.microsoft.playwright.options.AriaRole;
 import constants.AppConstants;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.testng.Assert;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
+
+import java.nio.file.Paths;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
-public class LoginPageTest extends BaseTest {
+public class HomePageTest extends BaseTest {
     private Page page;
 
     @Test(priority = 1)
+    @Severity(SeverityLevel.NORMAL)
     public void loginPageNavigationTest() {
-        String actLoginPageTitle = loginPage.getLoginPageTitle();
+        String actLoginPageTitle = homePage.getLoginPageTitle();
         System.out.println("page act title: " + actLoginPageTitle);
         Assert.assertEquals(actLoginPageTitle, AppConstants.LOGIN_PAGE_TITLE);
     }
@@ -29,8 +34,9 @@ public class LoginPageTest extends BaseTest {
 //    }
 //
     @Test(priority = 3)
+    @Severity(SeverityLevel.BLOCKER)
     public void appLoginTest() {
-        Assert.assertTrue(loginPage.doLogin(prop.getProperty("username").trim(), prop.getProperty("password").trim()));
+        Assert.assertTrue(homePage.doLogin(prop.getProperty("username").trim(), prop.getProperty("password").trim()),"Email ou mot de passe incorrect");
     }
 //
 //    @Test(priority = 7)
@@ -57,20 +63,24 @@ public class LoginPageTest extends BaseTest {
     public Object[][] getProductData() {
         return new Object[][] {
                 { "T-shirt" },
-                { "Ampoule" },
-                { "chaise" }
+                { "xoxo" },
+                { "chaise" },
+                { "ulrich" }
         };
     }
 
     @Test(dataProvider = "getProductData",priority = 6)
+    @Severity(SeverityLevel.BLOCKER)
     public void searchTest(String productName)  {
-        loginPage.doSearch(productName);
-        Locator p = loginPage.page.locator(loginPage.searchResult)
+        homePage.doSearch(productName);
+        Locator p = homePage.page.locator(homePage.searchResult)
                 .filter(new Locator.FilterOptions().setHasText(productName));
 
         int count = p.count();
+        if(count==0)
+            count++;
         for (int i = 0; i < count; ++i) {
-            String s = loginPage.getResultSearch(i, productName);
+            String s = homePage.getResultSearch(i, productName);
 
         if(s.equals("ok"))
             System.out.println("Le produit est bien present");
@@ -80,6 +90,13 @@ public class LoginPageTest extends BaseTest {
             Assert.fail("Pas de correspondance entre le resulat et l'élement recherché");
         }
 
+        }
+}
+
+//   @AfterMethod
+//    public void Screen(ITestResult iTestResult){
+//        if(iTestResult.getStatus()!=1)
+//            page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("FailedTest.png")).setFullPage(true));
+//   }
 
 }
-}}

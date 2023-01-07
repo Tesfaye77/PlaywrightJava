@@ -3,9 +3,8 @@ package Pages;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.TimeoutError;
-import com.microsoft.playwright.options.AriaRole;
 
-public class LoginPage {
+public class HomePage {
     public Page page;
 
 
@@ -26,7 +25,7 @@ public class LoginPage {
 
 
     // 2. page constructor:
-    public LoginPage(Page page) {
+    public HomePage(Page page) {
         this.page = page;
     }
 
@@ -99,10 +98,10 @@ public class LoginPage {
     }
 
 
-    public LoginPage navigateToLoginPage() {
+    public HomePage navigateToLoginPage() {
         page.click(handle_mouse);
         page.click(logout_bouton);
-        return new LoginPage(page);
+        return new HomePage(page);
     }
 
 

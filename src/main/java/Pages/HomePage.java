@@ -3,6 +3,7 @@ package Pages;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.TimeoutError;
+import com.microsoft.playwright.options.WaitUntilState;
 import org.testng.Assert;
 
 import java.util.regex.Pattern;
@@ -30,8 +31,18 @@ public class HomePage {
 
     String badgeOfAdd = "#style_content_cart_wrapper__mqNbf >> text=0";
     String cartIcon = "id=style_content_cart_wrapper__mqNbf";
+    String registerButton = "text=S'inscrire";
+    String email_register = "id=email_register";
+    String password_register = "id=password_register";
+    String confirmPassword = "id=confirm_password_register";
+    String validationButton = "id=btn_register";
 
     public String searchResult = ".style_card__gNEqX";
+
+    String usedIDs = "text=Cet utilisateur existe déjà";
+
+    String incorrectIDs = "text=Email ou mot de passe incorrect";
+    String siteLogo ="id=style_header_home__8t_ie";
 
 
     // 2. page constructor:
@@ -65,6 +76,32 @@ public class HomePage {
         }
     }
 
+    public String getSiteLogoVision() {
+
+        try {
+            page.waitForURL("**/home", new Page.WaitForURLOptions().setTimeout(15000));
+            page.waitForURL("**/home", new Page.WaitForURLOptions().setWaitUntil(WaitUntilState.NETWORKIDLE));
+//            page.waitForTimeout(3000);
+        } catch (TimeoutError e) {
+            System.out.println("Timeout!");
+        }
+        if (page.isVisible(incorrectIDs))
+            return  ("wrong_IDs");
+        else{
+            if (page.isVisible(siteLogo))
+                return  ("ok");
+            else{
+                if (page.isVisible(usedIDs))
+                    return  ("used_IDs");
+                else
+                    return ("no_logo_seen");
+
+            }
+        }
+
+
+
+    }
 
     public String getHomePageTitle() {
         String title =  page.textContent(pageTitleHome);
@@ -204,6 +241,16 @@ public class HomePage {
             return (false);
 
     }
+
+
+    public void clickRegisterButton(String email,String password,String passconf) {
+        page.hover(registerButton);
+        page.click(registerButton);
+        page.fill(email_register, email);
+        page.fill(password_register, password);
+        page.fill(confirmPassword, passconf);
+        page.click(validationButton);}
+
 
 
 

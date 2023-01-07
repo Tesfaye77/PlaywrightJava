@@ -23,7 +23,7 @@
     <dependency>
       <groupId>com.microsoft.playwright</groupId>
       <artifactId>playwright</artifactId>
-      <version>1.27.0</version>
+      <version>1.28.1</version>
     </dependency>
 
     <dependency>
@@ -36,7 +36,7 @@
     <dependency>
       <groupId>com.aventstack</groupId>
       <artifactId>extentreports</artifactId>
-      <version>5.0.8</version>
+      <version>5.0.9</version>
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-testng -->
@@ -50,6 +50,26 @@
       <artifactId>allure-environment-writer</artifactId>
       <version>1.0.0</version>
     </dependency>
+    <dependency>
+      <groupId>com.withplum</groupId>
+      <artifactId>emojiBottomSheetDialog</artifactId>
+      <version>2.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>cookbook-storm-project</groupId>
+      <artifactId>lein-template</artifactId>
+      <version>0.2.0</version>
+    </dependency>
+
+
+
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-ooxml</artifactId>
+      <version>3.9</version>
+    </dependency>
+
+
   </dependencies>
 
   <build>
@@ -85,5 +105,12 @@
       </plugin>
     </plugins>
   </build>
+  <repositories>
+    <repository>
+      <id>clojars</id>
+      <name>Clojars</name>
+      <url>https://repo.clojars.org/</url>
+    </repository>
+  </repositories>
 
 </project>

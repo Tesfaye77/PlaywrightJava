@@ -66,8 +66,6 @@ public class BaseTest {
     @AfterTest
     public void tearDown() {
 
-//            page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("FailedTest.png")).setFullPage(true));
-
             page.context().browser().close();
 
     }

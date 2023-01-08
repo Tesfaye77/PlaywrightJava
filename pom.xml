@@ -50,16 +50,16 @@
       <artifactId>allure-environment-writer</artifactId>
       <version>1.0.0</version>
     </dependency>
-    <dependency>
-      <groupId>com.withplum</groupId>
-      <artifactId>emojiBottomSheetDialog</artifactId>
-      <version>2.0.0</version>
-    </dependency>
-    <dependency>
-      <groupId>cookbook-storm-project</groupId>
-      <artifactId>lein-template</artifactId>
-      <version>0.2.0</version>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>com.withplum</groupId>-->
+<!--      <artifactId>emojiBottomSheetDialog</artifactId>-->
+<!--      <version>2.0.0</version>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>cookbook-storm-project</groupId>-->
+<!--      <artifactId>lein-template</artifactId>-->
+<!--      <version>0.2.0</version>-->
+<!--    </dependency>-->
 
 
 
@@ -105,12 +105,12 @@
       </plugin>
     </plugins>
   </build>
-  <repositories>
-    <repository>
-      <id>clojars</id>
-      <name>Clojars</name>
-      <url>https://repo.clojars.org/</url>
-    </repository>
-  </repositories>
+<!--  <repositories>-->
+<!--    <repository>-->
+<!--      <id>clojars</id>-->
+<!--      <name>Clojars</name>-->
+<!--      <url>https://repo.clojars.org/</url>-->
+<!--    </repository>-->
+<!--  </repositories>-->
 
 </project>

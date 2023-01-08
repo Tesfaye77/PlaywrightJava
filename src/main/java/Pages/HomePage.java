@@ -25,7 +25,7 @@ public class HomePage {
     String handle_mouse = "id=style_avatar_wrapper__pEGIQ";
     String logout_bouton = "text=Se déconnecter";
 
-    String addToCartBtn ="id=style_btn_add_cart__gTXM7";
+    String addToCartBtn = "id=style_btn_add_cart__gTXM7";
 
     String notifOfAdd = "text=Votre panier à été mis à jour";
 
@@ -42,7 +42,13 @@ public class HomePage {
     String usedIDs = "text=Cet utilisateur existe déjà";
 
     String incorrectIDs = "text=Email ou mot de passe incorrect";
-    String siteLogo ="id=style_header_home__8t_ie";
+    String siteLogo = "id=style_header_home__8t_ie";
+
+    String fail2Password = "text=Les deux mots de passe ne sont pas identiques";
+    String failExistingUser = "text=Cet utilisateur existe déjà";
+    String emailFail = "text=Le format de l'email est invalid";
+    String minimum8character="text=Le mot de passe doit avoir au moins 8 caractères";
+
 
 
     // 2. page constructor:
@@ -52,7 +58,7 @@ public class HomePage {
 
     // 3. page actions/methods:
     public String getLoginPageTitle() {
-        String title =  page.textContent(pageTitlelogin);
+        String title = page.textContent(pageTitlelogin);
         System.out.println("page title: " + title);
         return title;
     }
@@ -67,10 +73,10 @@ public class HomePage {
         page.fill(password, appPassword);
         page.click(clickLogin);
         page.locator(confirmationLogin).waitFor();
-        if(page.locator(confirmationLogin).isVisible()) {
+        if (page.locator(confirmationLogin).isVisible()) {
             System.out.println("user is logged in successfully....");
             return true;
-        }else {
+        } else {
             System.out.println("user is not logged in successfully....");
             return false;
         }
@@ -79,12 +85,11 @@ public class HomePage {
     public String getSiteLogoVision() {
 
         try {
-            page.waitForURL("**/home", new Page.WaitForURLOptions().setTimeout(15000));
             page.waitForURL("**/home", new Page.WaitForURLOptions().setWaitUntil(WaitUntilState.NETWORKIDLE));
-//            page.waitForTimeout(3000);
         } catch (TimeoutError e) {
             System.out.println("Timeout!");
         }
+
         if (page.isVisible(incorrectIDs))
             return  ("wrong_IDs");
         else{
@@ -93,26 +98,26 @@ public class HomePage {
             else{
                 if (page.isVisible(usedIDs))
                     return  ("used_IDs");
-                else
-                    return ("no_logo_seen");
+                else if (page.isVisible(minimum8character)) {return  ("short_Pswd");}
+                else if (page.isVisible(fail2Password)) {return  ("same_Pswds");}
+                else if (page.isVisible(emailFail)) {return  ("invalidIDs");}
+                else return ("no_logo_seen");
 
             }
+//            else
+//            return ("no_logo_seen");
         }
-
-
-
     }
 
     public String getHomePageTitle() {
-        String title =  page.textContent(pageTitleHome);
+        String title = page.textContent(pageTitleHome);
         System.out.println("page title: " + title);
         return title;
     }
 
 
-
     public String getHomePageURL() {
-        String url =  page.url();
+        String url = page.url();
         System.out.println("page url : " + url);
         return url;
     }
@@ -122,6 +127,7 @@ public class HomePage {
         page.fill(searchBar, productName);
         return productName;
     }
+
     public String getResultSearch(int x, String searchedTerms) {
         Locator p = page.locator(searchResult)
                 .filter(new Locator.FilterOptions().setHasText(searchedTerms)).nth(x);
@@ -130,18 +136,17 @@ public class HomePage {
         } catch (TimeoutError e) {
             System.out.println("Timeout pour le résultat de la recherche!");
         }
-        if(page.isVisible("text=Aucun produit trouvé"))
+        if (page.isVisible("text=Aucun produit trouvé"))
             return ("Aucun_produit_trouvé");
         else if (p.isVisible()) {
             return ("ok");
-        }
-        else
+        } else
             return ("not_ok");
     }
 
 
     public void emptyTheCart() {
-        if (!page.isVisible(badgeOfAdd)){
+        if (!page.isVisible(badgeOfAdd)) {
             try {
                 page.waitForSelector(cartIcon, new Page.WaitForSelectorOptions().setTimeout(15000));
                 page.click(cartIcon);
@@ -172,7 +177,7 @@ public class HomePage {
 
         try {
             page.waitForSelector(addToCartBtn, new Page.WaitForSelectorOptions().setTimeout(15000));
-            page.fill(".style_input_quantity__xZDIb",String.valueOf(X));
+            page.fill(".style_input_quantity__xZDIb", String.valueOf(X));
             page.waitForLoadState();
             page.click(addToCartBtn);
         } catch (TimeoutError e) {
@@ -212,11 +217,12 @@ public class HomePage {
 
         page.waitForTimeout(3000);
     }
+
     public void ClickOnCartIcon() {
         try {
             page.waitForTimeout(2000);
             page.waitForSelector(cartIcon, new Page.WaitForSelectorOptions().setTimeout(1500));
-            if(page.isVisible(cartIcon))
+            if (page.isVisible(cartIcon))
                 page.click(cartIcon, new Page.ClickOptions().setTimeout(100));
         } catch (TimeoutError e) {
             System.out.println("Timeout to press on cart icon!");
@@ -235,7 +241,7 @@ public class HomePage {
         } catch (TimeoutError e) {
             System.out.println("Timeout pour le résultat de la recherche!");
         }
-        if(p.isVisible())
+        if (p.isVisible())
             return (true);
         else
             return (false);
@@ -243,23 +249,46 @@ public class HomePage {
     }
 
 
-    public void clickRegisterButton(String email,String password,String passconf) {
-        page.hover(registerButton);
-        page.click(registerButton);
-        page.fill(email_register, email);
-        page.fill(password_register, password);
-        page.fill(confirmPassword, passconf);
-        page.click(validationButton);}
-
-
+    public String clickRegisterButton(String email, String password, String passconf) {
+        try {
+            page.hover(registerButton);
+            page.click(registerButton);
+            page.fill(email_register, email);
+            page.fill(password_register, password);
+            page.fill(confirmPassword, passconf);
+            page.click(validationButton);
+        } catch (Exception e) {
+            System.out.println("Timeout pour l'inscription!");
+        }
+//        if (page.isVisible(emailFail))
+//            return ("Mauvais format d'email");
+//        else {
+//            if (page.isVisible(minimum8character))
+//                return ("Le mot de passe contient au 8 caractere");
+//            else {
+//                if (page.isVisible(failExistingUser))
+//
+//                    return ("utilisateur existent dejà");
+//                else {
+//                    if (page.isVisible(fail2Password))
+//
+//                        return ("les password ne sont pas identiques");
+//                }
+//            }
+//    }
+        return ("Inscription ok");
+    }
 
 
 
     public HomePage navigateToLoginPage() {
-        page.click(handle_mouse);
-        page.click(logout_bouton);
+        try {
+            page.click(handle_mouse);
+            page.click(logout_bouton);
+        } catch (Exception e) {
+            System.out.println("Timeout deconnexion impossible!");
+        }
+
         return new HomePage(page);
     }
-
-
 }

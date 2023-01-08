@@ -25,11 +25,11 @@
       <artifactId>slf4j-api</artifactId>
       <version>1.7.5</version>
     </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-log4j12</artifactId>
-      <version>1.7.5</version>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>org.slf4j</groupId>-->
+<!--      <artifactId>slf4j-log4j12</artifactId>-->
+<!--      <version>1.7.5</version>-->
+<!--    </dependency>-->
     <dependency>
       <groupId>com.microsoft.playwright</groupId>
       <artifactId>playwright</artifactId>
@@ -55,11 +55,11 @@
       <artifactId>allure-testng</artifactId>
       <version>2.20.1</version>
     </dependency>
-    <dependency>
-      <groupId>com.github.automatedowl</groupId>
-      <artifactId>allure-environment-writer</artifactId>
-      <version>1.0.0</version>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>com.github.automatedowl</groupId>-->
+<!--      <artifactId>allure-environment-writer</artifactId>-->
+<!--      <version>1.0.0</version>-->
+<!--    </dependency>-->
 <!--    <dependency>-->
 <!--      <groupId>com.withplum</groupId>-->
 <!--      <artifactId>emojiBottomSheetDialog</artifactId>-->
@@ -98,13 +98,6 @@
 <!--              <goal></goal>-->
 <!--            </goals>-->
           <configuration>
-            <annotationProcessorPaths>
-              <path>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>1.18.20</version>
-              </path>
-            </annotationProcessorPaths>
           <argLine>
             -javaagent:"${settings.localRepository}\org\aspectj\aspectjweaver\${aspectj.version}\aspectjweaver-${aspectj.version}.jar"
           </argLine>

@@ -1,10 +1,7 @@
 package listeners;
 
 import Factory.PlaywrightFactory;
-import com.google.common.collect.ImmutableMap;
-import com.microsoft.playwright.Browser;
-import com.microsoft.playwright.BrowserContext;
-import com.microsoft.playwright.Locator;
+
 import com.microsoft.playwright.Page;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;
@@ -14,8 +11,6 @@ import org.testng.annotations.BeforeSuite;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.nio.file.Paths;
-
-import static com.github.automatedowl.tools.AllureEnvironmentWriter.allureEnvironmentWriter;
 
 
 public class AllureReportListener implements ITestListener {

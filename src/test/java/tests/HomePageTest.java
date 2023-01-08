@@ -23,7 +23,6 @@ public class HomePageTest extends BaseTest {
 
 
     @Test(priority = 1)
-    @Parameters({"browser"})
     @Severity(SeverityLevel.NORMAL)
     public void loginPageNavigationTest() {
         String actLoginPageTitle = homePage.getLoginPageTitle();
@@ -38,7 +37,6 @@ public class HomePageTest extends BaseTest {
 //    }
 //
     @Test(priority = 3)
-    @Parameters({"browser"})
     @Severity(SeverityLevel.BLOCKER)
     public void appLoginTest() {
         Assert.assertTrue(homePage.doLogin(prop.getProperty("username").trim(),
@@ -85,7 +83,6 @@ public class HomePageTest extends BaseTest {
     }
 
     @Test(dataProvider = "getProductData",priority = 6)
-    @Parameters({"browser"})
     @Severity(SeverityLevel.BLOCKER)
     public void searchTest(String productName)  {
         homePage.doSearch(productName);

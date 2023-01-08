@@ -94,9 +94,9 @@
         <executions>
           <execution>
             <phase>integration-test</phase>
-<!--            <goals>-->
-<!--              <goal></goal>-->
-<!--            </goals>-->
+            <goals>
+              <goal>test</goal>
+            </goals>
           <configuration>
             <forkCount>3</forkCount>
             <reuseForks>true</reuseForks>

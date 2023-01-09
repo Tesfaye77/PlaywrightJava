@@ -12,7 +12,7 @@
     <test name=" Login Page Test_chromium">
         <parameter name="browser" value="chromium" />
         <parameter name="username" value="ubogni@gmail.com" />
-        <parameter name="password" value="Ulrich7" />
+        <parameter name="password" value="Ulrich77" />
         <classes>
             <class name="tests.HomePageTest" />
         </classes>

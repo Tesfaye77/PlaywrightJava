@@ -46,7 +46,7 @@ public class AllureReportListener implements ITestListener {
     public void onStart(ITestContext iTestContext) {
         System.out.println("I am in onStart method " + iTestContext.getName());
         iTestContext.setAttribute("Page", PlaywrightFactory.getPage());
-        Allure.addAttachment("Données supplémentaires: ", String.valueOf("Heure de fin du test "+ new Date().toString()));
+        Allure.addAttachment("Données supplémentaires: ", String.valueOf("Heure de debut du test "+ new Date().toString()));
     }
 
     @Override
@@ -58,7 +58,7 @@ public class AllureReportListener implements ITestListener {
     @Override
     public void onTestStart(ITestResult iTestResult) {
         System.out.println("I am in onTestStart method " + getTestMethodName(iTestResult) + " start");
-        Allure.addAttachment("Données supplémentaires: ", String.valueOf("Heure de fin du test "+ new Date().toString()));
+        Allure.addAttachment("Données supplémentaires: ", String.valueOf("Heure de debut du test "+ new Date().toString()));
     }
 
     @Override

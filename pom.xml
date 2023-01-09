@@ -12,8 +12,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
     <extentreports-version>5.0.8</extentreports-version>
     <aspectj.version>1.8.10</aspectj.version>
   </properties>
@@ -85,38 +85,23 @@
   <build>
     <plugins>
 
-
-
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.20.1</version>
-        <executions>
-          <execution>
-            <phase>integration-test</phase>
-            <goals>
-              <goal>test</goal>
-            </goals>
-          <configuration>
-            <forkCount>3</forkCount>
-            <reuseForks>true</reuseForks>
-          <argLine>
-            -javaagent:"${settings.localRepository}\org\aspectj\aspectjweaver\${aspectj.version}\aspectjweaver-${aspectj.version}.jar"
-          </argLine>
-          <testFailureIgnore>true</testFailureIgnore>
-          <suiteXFiles>
-            <file>src/test/ressources/testrunners/testng_regressions.xml</file>
-          </suiteXFiles>
-            <annotationProcessorPaths>
-              <path>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>1.18.20</version>
-              </path>
-            </annotationProcessorPaths>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.10.1</version>
+        <!--              <source>17</source>-->
+        <!--              <target>17</target>-->
+        <configuration>
+          <annotationProcessorPaths>
+            <path>
+              <groupId>org.projectlombok</groupId>
+              <artifactId>lombok</artifactId>
+              <version>1.18.22</version>
+            </path>
+          </annotationProcessorPaths>
+          <source>17</source>
+          <target>17</target>
         </configuration>
-          </execution>
-        </executions>
         <dependencies>
           <dependency>
             <groupId>org.aspectj</groupId>
@@ -124,49 +109,88 @@
             <version>${aspectj.version}</version>
           </dependency>
         </dependencies>
+
       </plugin>
 
 <!--      <plugin>-->
 <!--        <groupId>org.apache.maven.plugins</groupId>-->
-<!--        <artifactId>maven-compiler-plugin</artifactId>-->
-<!--        <version>3.8.1</version>-->
-<!--        <configuration>-->
-<!--          <source>1.8</source>-->
-<!--          <target>1.8</target>-->
-<!--        </configuration>-->
-<!--      </plugin>-->
-
-
-<!--      <plugin>-->
-<!--        <groupId>org.apache.maven.plugins</groupId>-->
-<!--        <artifactId>maven-compiler-plugin</artifactId>-->
-<!--        <version>3.8.1</version>-->
-<!--        <configuration>-->
-<!--          <source>1.8</source>-->
-<!--          <target>1.8</target>-->
-<!--        </configuration>-->
-<!--      </plugin>-->
-
-
-<!--      <plugin>-->
-<!--        <groupId>org.apache.maven.plugins</groupId>-->
 <!--        <artifactId>maven-surefire-plugin</artifactId>-->
-<!--        <version>2.20</version>-->
-
-<!--        <configuration>-->
-<!--          <forkCount>3</forkCount>-->
-<!--          <reuseForks>true</reuseForks>-->
-<!--          <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>-->
-<!--          <suiteXmlFiles>-->
-<!--            <suiteXmlFile>src/test/resources/testrunners/testng_regressions.xml</suiteXmlFile>-->
-<!--            &lt;!&ndash; <suiteXmlFile>${suiteXmlFile}</suiteXmlFile> &ndash;&gt;-->
-
-<!--          </suiteXmlFiles>-->
-
-
-
+<!--        <version>3.0.0-M7</version>-->
+<!--        <executions>-->
+<!--          <execution>-->
+<!--            <phase>integration-test</phase>-->
+<!--            <goals>-->
+<!--              <goal>test</goal>-->
+<!--            </goals>-->
+<!--          <configuration>-->
+<!--            <forkCount>3</forkCount>-->
+<!--            <reuseForks>true</reuseForks>-->
+<!--          <argLine>-->
+<!--            -javaagent:"${settings.localRepository}\org\aspectj\aspectjweaver\${aspectj.version}\aspectjweaver-${aspectj.version}.jar"-->
+<!--          </argLine>-->
+<!--          <testFailureIgnore>true</testFailureIgnore>-->
+<!--          <suiteXFiles>-->
+<!--            <file>src/test/ressources/testrunners/testng_regressions.xml</file>-->
+<!--          </suiteXFiles>-->
+<!--            <annotationProcessorPaths>-->
+<!--              <path>-->
+<!--                <groupId>org.projectlombok</groupId>-->
+<!--                <artifactId>lombok</artifactId>-->
+<!--                <version>1.18.20</version>-->
+<!--              </path>-->
+<!--            </annotationProcessorPaths>-->
 <!--        </configuration>-->
+<!--          </execution>-->
+<!--        </executions>-->
+<!--        <dependencies>-->
+<!--          <dependency>-->
+<!--            <groupId>org.aspectj</groupId>-->
+<!--            <artifactId>aspectjweaver</artifactId>-->
+<!--            <version>${aspectj.version}</version>-->
+<!--          </dependency>-->
+<!--        </dependencies>-->
 <!--      </plugin>-->
+
+
+
+
+
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.0.0-M7</version>
+        <executions>
+          <execution>
+            <phase>integration-test</phase>
+            <goals><goal>test</goal></goals>
+            <configuration>
+
+              <suiteXmlFiles>
+                <file>src/test/ressources/testrunners/testng_regressions.xml</file>
+                <!-- <suiteXmlFile>${suiteXmlFile}</suiteXmlFile> -->
+              </suiteXmlFiles>
+              <argLine>
+                -javaagent:"${settings.localRepository}\org\aspectj\aspectjweaver\${aspectj.version}\aspectjweaver-${aspectj.version}.jar"
+              </argLine>
+              <testFailureIgnore>true</testFailureIgnore>
+
+            </configuration>
+          </execution>
+        </executions>
+
+        <configuration>
+          <suiteXmlFiles>
+            <file>src/test/ressources/testrunners/testng_regressions.xml</file>
+            <!-- <suiteXmlFile>${suiteXmlFile}</suiteXmlFile> -->
+          </suiteXmlFiles>
+          <testFailureIgnore>true</testFailureIgnore>
+
+
+
+        </configuration>
+      </plugin>
+
 
 
     </plugins>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="TestSuite" time="54.854" tests="6" errors="0" skipped="0" failures="2">
+  <properties>
+    <property name="java.specification.version" value="17"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\Pawk39\IdeaProjects\Playwrite\target\test-classes;C:\Users\Pawk39\IdeaProjects\Playwrite\target\classes;C:\Users\Pawk39\.m2\repository\org\slf4j\slf4j-api\1.7.5\slf4j-api-1.7.5.jar;C:\Users\Pawk39\.m2\repository\com\microsoft\playwright\playwright\1.28.1\playwright-1.28.1.jar;C:\Users\Pawk39\.m2\repository\com\google\code\gson\gson\2.8.9\gson-2.8.9.jar;C:\Users\Pawk39\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\Pawk39\.m2\repository\com\microsoft\playwright\driver\1.28.1\driver-1.28.1.jar;C:\Users\Pawk39\.m2\repository\com\microsoft\playwright\driver-bundle\1.28.1\driver-bundle-1.28.1.jar;C:\Users\Pawk39\.m2\repository\org\testng\testng\7.7.0\testng-7.7.0.jar;C:\Users\Pawk39\.m2\repository\com\beust\jcommander\1.82\jcommander-1.82.jar;C:\Users\Pawk39\.m2\repository\org\webjars\jquery\3.6.1\jquery-3.6.1.jar;C:\Users\Pawk39\.m2\repository\com\aventstack\extentreports\5.0.9\extentreports-5.0.9.jar;C:\Users\Pawk39\.m2\repository\io\reactivex\rxjava3\rxjava\3.0.4\rxjava-3.0.4.jar;C:\Users\Pawk39\.m2\repository\org\reactivestreams\reactive-streams\1.0.3\reactive-streams-1.0.3.jar;C:\Users\Pawk39\.m2\repository\org\freemarker\freemarker\2.3.30\freemarker-2.3.30.jar;C:\Users\Pawk39\.m2\repository\org\projectlombok\lombok\1.18.12\lombok-1.18.12.jar;C:\Users\Pawk39\.m2\repository\io\qameta\allure\allure-testng\2.20.1\allure-testng-2.20.1.jar;C:\Users\Pawk39\.m2\repository\io\qameta\allure\allure-java-commons\2.20.1\allure-java-commons-2.20.1.jar;C:\Users\Pawk39\.m2\repository\io\qameta\allure\allure-model\2.20.1\allure-model-2.20.1.jar;C:\Users\Pawk39\.m2\repository\io\qameta\allure\allure-test-filter\2.20.1\allure-test-filter-2.20.1.jar;C:\Users\Pawk39\.m2\repository\org\apache\poi\poi-ooxml\3.9\poi-ooxml-3.9.jar;C:\Users\Pawk39\.m2\repository\org\apache\poi\poi\3.9\poi-3.9.jar;C:\Users\Pawk39\.m2\repository\commons-codec\commons-codec\1.5\commons-codec-1.5.jar;C:\Users\Pawk39\.m2\repository\org\apache\poi\poi-ooxml-schemas\3.9\poi-ooxml-schemas-3.9.jar;C:\Users\Pawk39\.m2\repository\org\apache\xmlbeans\xmlbeans\2.3.0\xmlbeans-2.3.0.jar;C:\Users\Pawk39\.m2\repository\stax\stax-api\1.0.1\stax-api-1.0.1.jar;C:\Users\Pawk39\.m2\repository\dom4j\dom4j\1.6.1\dom4j-1.6.1.jar;C:\Users\Pawk39\.m2\repository\xml-apis\xml-apis\1.0.b2\xml-apis-1.0.b2.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="GMT+01:00"/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="java.vm.specification.version" value="17"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="FR"/>
+    <property name="sun.boot.library.path" value="C:\Users\Pawk39\Documents\ulrich\jdk-17.0.1\bin"/>
+    <property name="sun.java.command" value="C:\Users\Pawk39\AppData\Local\Temp\surefire16195070687486965959\surefirebooter-20230109103354310_3.jar C:\Users\Pawk39\AppData\Local\Temp\surefire16195070687486965959 2023-01-09T10-33-44_512-jvmRun1 surefire-20230109103354310_1tmp surefire_0-20230109103354310_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="C:\Users\Pawk39\IdeaProjects\Playwrite\target\test-classes;C:\Users\Pawk39\IdeaProjects\Playwrite\target\classes;C:\Users\Pawk39\.m2\repository\org\slf4j\slf4j-api\1.7.5\slf4j-api-1.7.5.jar;C:\Users\Pawk39\.m2\repository\com\microsoft\playwright\playwright\1.28.1\playwright-1.28.1.jar;C:\Users\Pawk39\.m2\repository\com\google\code\gson\gson\2.8.9\gson-2.8.9.jar;C:\Users\Pawk39\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\Pawk39\.m2\repository\com\microsoft\playwright\driver\1.28.1\driver-1.28.1.jar;C:\Users\Pawk39\.m2\repository\com\microsoft\playwright\driver-bundle\1.28.1\driver-bundle-1.28.1.jar;C:\Users\Pawk39\.m2\repository\org\testng\testng\7.7.0\testng-7.7.0.jar;C:\Users\Pawk39\.m2\repository\com\beust\jcommander\1.82\jcommander-1.82.jar;C:\Users\Pawk39\.m2\repository\org\webjars\jquery\3.6.1\jquery-3.6.1.jar;C:\Users\Pawk39\.m2\repository\com\aventstack\extentreports\5.0.9\extentreports-5.0.9.jar;C:\Users\Pawk39\.m2\repository\io\reactivex\rxjava3\rxjava\3.0.4\rxjava-3.0.4.jar;C:\Users\Pawk39\.m2\repository\org\reactivestreams\reactive-streams\1.0.3\reactive-streams-1.0.3.jar;C:\Users\Pawk39\.m2\repository\org\freemarker\freemarker\2.3.30\freemarker-2.3.30.jar;C:\Users\Pawk39\.m2\repository\org\projectlombok\lombok\1.18.12\lombok-1.18.12.jar;C:\Users\Pawk39\.m2\repository\io\qameta\allure\allure-testng\2.20.1\allure-testng-2.20.1.jar;C:\Users\Pawk39\.m2\repository\io\qameta\allure\allure-java-commons\2.20.1\allure-java-commons-2.20.1.jar;C:\Users\Pawk39\.m2\repository\io\qameta\allure\allure-model\2.20.1\allure-model-2.20.1.jar;C:\Users\Pawk39\.m2\repository\io\qameta\allure\allure-test-filter\2.20.1\allure-test-filter-2.20.1.jar;C:\Users\Pawk39\.m2\repository\org\apache\poi\poi-ooxml\3.9\poi-ooxml-3.9.jar;C:\Users\Pawk39\.m2\repository\org\apache\poi\poi\3.9\poi-3.9.jar;C:\Users\Pawk39\.m2\repository\commons-codec\commons-codec\1.5\commons-codec-1.5.jar;C:\Users\Pawk39\.m2\repository\org\apache\poi\poi-ooxml-schemas\3.9\poi-ooxml-schemas-3.9.jar;C:\Users\Pawk39\.m2\repository\org\apache\xmlbeans\xmlbeans\2.3.0\xmlbeans-2.3.0.jar;C:\Users\Pawk39\.m2\repository\stax\stax-api\1.0.1\stax-api-1.0.1.jar;C:\Users\Pawk39\.m2\repository\dom4j\dom4j\1.6.1\dom4j-1.6.1.jar;C:\Users\Pawk39\.m2\repository\xml-apis\xml-apis\1.0.b2\xml-apis-1.0.b2.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\Pawk39"/>
+    <property name="user.language" value="fr"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2021-10-19"/>
+    <property name="java.home" value="C:\Users\Pawk39\Documents\ulrich\jdk-17.0.1"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\Pawk39\IdeaProjects\Playwrite"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\Pawk39\AppData\Local\Temp\surefire16195070687486965959\surefirebooter-20230109103354310_3.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="17.0.1+12-LTS-39"/>
+    <property name="user.name" value="Pawk39"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="C:\Users\Pawk39\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\Pawk39\AppData\Local\Temp\"/>
+    <property name="java.version" value="17.0.1"/>
+    <property name="user.dir" value="C:\Users\Pawk39\IdeaProjects\Playwrite"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Users\Pawk39\Documents\ulrich\jdk-17.0.1\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\Pawk39\scoop\shims;C:\Users\Pawk39\AppData\Local\Microsoft\WindowsApps;C:\Users\Pawk39\AppData\Local\Programs\Git\cmd;C:\Users\Pawk39\Documents\ulrich\Maven\apache-maven-3.8.5\bin;C:\Users\Pawk39\Documents\ulrich\jdk1.8.0_261\bin;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="17.0.1+12-LTS-39"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="61.0"/>
+  </properties>
+  <testcase name="loginPageNavigationTest" classname="tests.HomePageTest" time="0.493">
+    <system-out><![CDATA[...
+... TestNG 7.7.0 by Cédric Beust (cedric@beust.com)
+...
+
+Test Suite started!
+I am in onStart method  Login Page Test_chromium
+browser name is : chromium
+browser name is : chromium
+loginPageNavigationTest started!
+I am in onTestStart method loginPageNavigationTest start
+page title: Connexion
+page act title: Connexion
+I am in onTestSuccess method loginPageNavigationTest succeed
+loginPageNavigationTest passed!
+]]></system-out>
+    <system-err><![CDATA[SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+]]></system-err>
+  </testcase>
+  <testcase name="appLoginTest" classname="tests.HomePageTest" time="7.215">
+    <system-out><![CDATA[appLoginTest started!
+I am in onTestStart method appLoginTest start
+App creds: ubogni@gmail.com:Ulrich77
+user is logged in successfully....
+ok
+I am in onTestSuccess method appLoginTest succeed
+appLoginTest passed!
+]]></system-out>
+  </testcase>
+  <testcase name="searchTest[T-shirt](1)" classname="tests.HomePageTest" time="1.367">
+    <system-out><![CDATA[searchTest started!
+I am in onTestStart method searchTest start
+Le produit est bien present
+I am in onTestSuccess method searchTest succeed
+searchTest passed!
+]]></system-out>
+  </testcase>
+  <testcase name="searchTest[xoxo](2)" classname="tests.HomePageTest" time="16.466">
+    <failure message="Produit inexistant dans la base de donnée" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Produit inexistant dans la base de donnée
+	at org.testng.Assert.fail(Assert.java:110)
+	at tests.HomePageTest.searchTest(HomePageTest.java:101)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:677)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:829)
+	at org.testng.TestRunner.run(TestRunner.java:602)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:437)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:475)
+	at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:58)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+]]></failure>
+    <system-out><![CDATA[searchTest started!
+I am in onTestStart method searchTest start
+Timeout pour le résultat de la recherche!
+I am in onTestFailure method searchTest failed
+Screenshot captured for test case:searchTest
+searchTest failed!
+]]></system-out>
+  </testcase>
+  <testcase name="searchTest[chaise](3)" classname="tests.HomePageTest" time="1.375">
+    <system-out><![CDATA[searchTest started!
+I am in onTestStart method searchTest start
+Le produit est bien present
+Le produit est bien present
+I am in onTestSuccess method searchTest succeed
+searchTest passed!
+]]></system-out>
+  </testcase>
+  <testcase name="searchTest[ulrich](4)" classname="tests.HomePageTest" time="16.404">
+    <failure message="Produit inexistant dans la base de donnée" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Produit inexistant dans la base de donnée
+	at org.testng.Assert.fail(Assert.java:110)
+	at tests.HomePageTest.searchTest(HomePageTest.java:101)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:677)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:829)
+	at org.testng.TestRunner.run(TestRunner.java:602)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:437)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:475)
+	at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:58)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+]]></failure>
+    <system-out><![CDATA[searchTest started!
+I am in onTestStart method searchTest start
+Timeout pour le résultat de la recherche!
+I am in onTestFailure method searchTest failed
+Screenshot captured for test case:searchTest
+searchTest failed!
+]]></system-out>
+  </testcase>
+</testsuite>

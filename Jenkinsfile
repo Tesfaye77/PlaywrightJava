@@ -1,60 +1,65 @@
 pipeline
 {
     agent any
-
-    tools{
-    	maven 'maven'
+        tools{
+        maven 'maven'
+        allure 'allure'
+        jdk 'java'
         }
+
 
     stages
     {
-        stage('Build')
-        {
-            steps
-            {
-                 git 'https://github.com/Tesfaye77/PlaywrightJava.git'
-                 sh "mvn -Dmaven.test.failure.ignore=true clean package"
-            }
-            post
-            {
-                success
-                {
-                    testng_regressions '**/target/surefire-reports/TEST-*.xml'
-                    archiveArtifacts 'target/*.jar'
+
+
+        stage('Gitt') {
+            steps {
+                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+
+                                git branch: "main",
+                                    url: "https://github.com/Tesfaye77/PlaywrightJava.git"
+
+
                 }
             }
         }
 
 
 
-        stage("Deploy to QA"){
-            steps{
-                echo("deploy to qa")
-            }
-        }
-
-        stage('Regression Automation Test') {
+                stage('Regression Automation Test') {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    git 'https://github.com/Tesfaye77/PlaywrightJava'
-                    sh "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_regressions.xml"
+                            sh"echo TEST"
+                             sh "mvn clean test "
+
+
 
                 }
             }
         }
 
+                stage("Allure Report generation"){
+                    steps{
+            allure([
+                includeProperties : true,
+                jdk : 'java',
+                properties : [[key: 'release version', value: '4.0.2']],
+                reportBuildPolicy : 'ALWAYS',
+                results : [[path: 'allure-results']]
+            ])
+        }}
 
-        stage('Publish Extent Report'){
-            steps{
-                     publishHTML([allowMissing: false,
-                                  alwaysLinkToLastBuild: false,
-                                  keepAll: true,
-                                  reportDir: 'build',
-                                  reportFiles: 'TestExecutionReport.html',
-                                  reportName: 'HTML Extent Report',
-                                  reportTitles: ''])
-            }
-        }
+//         stage('Publish Extent Report'){
+//             steps{
+//                      publishHTML([allowMissing: false,
+//                                   alwaysLinkToLastBuild: false,
+//                                   keepAll: true,
+//                                   reportDir: 'build',
+//                                   reportFiles: 'TestExecutionReport.html',
+//                                   reportName: 'HTML Extent Report',
+//                                   reportTitles: ''])
+//             }
+//         }
 
 
 

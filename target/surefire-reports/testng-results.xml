@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="6" passed="4" failed="2" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-01-09T10:33:55 GMT+01:00" name="Z-train Test Regression PW Suite" finished-at="2023-01-09T10:34:49 GMT+01:00" duration-ms="53514">
+    <groups>
+    </groups>
+    <test started-at="2023-01-09T10:33:55 GMT+01:00" name=" Login Page Test_chromium" finished-at="2023-01-09T10:34:49 GMT+01:00" duration-ms="53514">
+      <class name="tests.HomePageTest">
+        <test-method is-config="true" signature="setup(java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:tests.HomePageTest@1fa1cab1]" started-at="2023-01-09T10:33:55 GMT+01:00" name="setup" finished-at="2023-01-09T10:34:05 GMT+01:00" duration-ms="9959" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chromium]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[ubogni@gmail.com]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Ulrich77]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="loginPageNavigationTest()[pri:1, instance:tests.HomePageTest@1fa1cab1]" started-at="2023-01-09T10:34:05 GMT+01:00" name="loginPageNavigationTest" finished-at="2023-01-09T10:34:05 GMT+01:00" duration-ms="81" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginPageNavigationTest -->
+        <test-method signature="appLoginTest()[pri:3, instance:tests.HomePageTest@1fa1cab1]" started-at="2023-01-09T10:34:06 GMT+01:00" name="appLoginTest" finished-at="2023-01-09T10:34:12 GMT+01:00" duration-ms="6744" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- appLoginTest -->
+        <test-method signature="searchTest(java.lang.String)[pri:6, instance:tests.HomePageTest@1fa1cab1]" started-at="2023-01-09T10:34:13 GMT+01:00" name="searchTest" data-provider="getProductData" finished-at="2023-01-09T10:34:14 GMT+01:00" duration-ms="1069" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[T-shirt]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- searchTest -->
+        <test-method signature="searchTest(java.lang.String)[pri:6, instance:tests.HomePageTest@1fa1cab1]" started-at="2023-01-09T10:34:14 GMT+01:00" name="searchTest" data-provider="getProductData" finished-at="2023-01-09T10:34:30 GMT+01:00" duration-ms="16048" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[xoxo]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Produit inexistant dans la base de donnée]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Produit inexistant dans la base de donnée
+at org.testng.Assert.fail(Assert.java:110)
+at tests.HomePageTest.searchTest(HomePageTest.java:101)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:677)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:829)
+at org.testng.TestRunner.run(TestRunner.java:602)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:437)
+at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:475)
+at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:58)
+at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+at java.base/java.lang.Thread.run(Thread.java:833)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- searchTest -->
+        <test-method signature="searchTest(java.lang.String)[pri:6, instance:tests.HomePageTest@1fa1cab1]" started-at="2023-01-09T10:34:31 GMT+01:00" name="searchTest" data-provider="getProductData" finished-at="2023-01-09T10:34:32 GMT+01:00" duration-ms="1077" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chaise]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- searchTest -->
+        <test-method signature="searchTest(java.lang.String)[pri:6, instance:tests.HomePageTest@1fa1cab1]" started-at="2023-01-09T10:34:32 GMT+01:00" name="searchTest" data-provider="getProductData" finished-at="2023-01-09T10:34:48 GMT+01:00" duration-ms="16043" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[ulrich]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Produit inexistant dans la base de donnée]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Produit inexistant dans la base de donnée
+at org.testng.Assert.fail(Assert.java:110)
+at tests.HomePageTest.searchTest(HomePageTest.java:101)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:677)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:969)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:829)
+at org.testng.TestRunner.run(TestRunner.java:602)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:437)
+at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:475)
+at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:58)
+at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+at java.base/java.lang.Thread.run(Thread.java:833)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- searchTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.HomePageTest@1fa1cab1]" started-at="2023-01-09T10:34:48 GMT+01:00" name="tearDown" finished-at="2023-01-09T10:34:49 GMT+01:00" duration-ms="193" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- tests.HomePageTest -->
+    </test> <!--  Login Page Test_chromium -->
+  </suite> <!-- Z-train Test Regression PW Suite -->
+</testng-results>

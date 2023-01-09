@@ -51,6 +51,16 @@ public class BaseTest {
             }
             index.delete();
         }
+
+        File index1 = new File("C:/Users/Pawk39/.jenkins/workspace/ZtrainPipeline/allure-results");
+        if (index1.exists()) {
+            String[]entries = index1.list();
+            for(String s: entries){
+                File currentFile = new File(index1.getPath(),s);
+                currentFile.delete();
+            }
+            index1.delete();
+        }
 //        File index2 = new File("C:/Users/hambe/Desktop/playwrightDemo/target/videos");
 //        if (index2.exists()) {
 //            String[]entries = index2.list();
@@ -60,6 +70,8 @@ public class BaseTest {
 //            }
 //            index2.delete();
 //        }
+
+
 
     }
 

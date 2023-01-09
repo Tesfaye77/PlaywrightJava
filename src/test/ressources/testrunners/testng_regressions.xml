@@ -11,8 +11,8 @@
 
     <test name=" Login Page Test_chromium">
         <parameter name="browser" value="chromium" />
-        <parameter name="username" value="ubogni@gmail.com" />
-        <parameter name="password" value="Ulrich77" />
+        <parameter name="username" value="gg@gmail.com" />
+        <parameter name="password" value="Ulrich10" />
         <classes>
             <class name="tests.HomePageTest" />
         </classes>

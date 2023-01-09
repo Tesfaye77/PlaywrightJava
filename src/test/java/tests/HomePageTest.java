@@ -1,6 +1,7 @@
 package tests;
 
-import Base.BaseTest;
+import Util.TestUtil;
+import Bases.BaseTest;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
@@ -12,9 +13,7 @@ import listeners.Retry;
 import org.testng.Assert;
 
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
-import Util.TestUtil;
 
 
 public class HomePageTest extends BaseTest {
@@ -37,7 +36,7 @@ public class HomePageTest extends BaseTest {
 //    }
 //
 //
-    @Test(priority = 3,retryAnalyzer = Retry.class)
+    @Test(priority = 5,retryAnalyzer = Retry.class)
     @Severity(SeverityLevel.BLOCKER)
     public void appLoginTest() {
         homePage.doLogin(UserName, Password);
@@ -52,11 +51,11 @@ public class HomePageTest extends BaseTest {
         }
     }
 //
-//    @Ignore
-//    @Test(priority = 7,retryAnalyzer = Retry.class)
-//    public void appLogoutTest() {
-//        homePage = homePage.navigateToLoginPage();
-//    }
+
+    @Test(priority = 4,retryAnalyzer = Retry.class)
+    public void appLogoutTest() {
+        homePage = homePage.navigateToLoginPage();
+    }
 ////
 //
 //
@@ -75,40 +74,40 @@ public class HomePageTest extends BaseTest {
 //        Assert.assertEquals(actualURL, prop.getProperty("url"));
 //    }
 //
-//    @DataProvider
-//    public Object[][] getProductData() {
-//        return new Object[][] {
-//                { "T-shirt" },
-//                { "xoxo" },
-//                { "chaise" },
-//                { "ulrich" }
-//        };
-//    }
-//
-//    @Ignore
-//    @Test(dataProvider = "getProductData",priority = 6,retryAnalyzer = Retry.class)
-//    @Severity(SeverityLevel.BLOCKER)
-//    public void searchTest(String productName)  {
-//        homePage.doSearch(productName);
-//        Locator p = homePage.page.locator(homePage.searchResult)
-//                .filter(new Locator.FilterOptions().setHasText(productName));
-//
-//        int count = p.count();
-//        if(count==0)
-//            count++;
-//        for (int i = 0; i < count; ++i) {
-//            String s = homePage.getResultSearch(i, productName);
-//
-//        if(s.equals("ok"))
-//            System.out.println("Le produit est bien present");
-//        else if (s.equals("Aucun_produit_trouvé")) {
-//            Assert.fail("Produit inexistant dans la base de donnée");
-//        } else if (s.equals("not_ok")) {
-//            Assert.fail("Pas de correspondance entre le resulat et l'élement recherché");
-//        }
-//
-//        }
-//}
+    @DataProvider
+    public Object[][] getProductData() {
+        return new Object[][] {
+                { "T-shirt" },
+                { "xoxo" },
+                { "chaise" },
+                { "ulrich" }
+        };
+    }
+
+
+    @Test(dataProvider = "getProductData",priority = 3,retryAnalyzer = Retry.class)
+    @Severity(SeverityLevel.BLOCKER)
+    public void searchTest(String productName)  {
+        homePage.doSearch(productName);
+        Locator p = homePage.page.locator(homePage.searchResult)
+                .filter(new Locator.FilterOptions().setHasText(productName));
+
+        int count = p.count();
+        if(count==0)
+            count++;
+        for (int i = 0; i < count; ++i) {
+            String s = homePage.getResultSearch(i, productName);
+
+        if(s.equals("ok"))
+            System.out.println("Le produit est bien present");
+        else if (s.equals("Aucun_produit_trouvé")) {
+            Assert.fail("Produit inexistant dans la base de donnée");
+        } else if (s.equals("not_ok")) {
+            Assert.fail("Pas de correspondance entre le resulat et l'élement recherché");
+        }
+
+        }
+}
 //
 ////
 //    @DataProvider
@@ -147,41 +146,42 @@ public class HomePageTest extends BaseTest {
 //
 //
 //
-//    @DataProvider(name = "getRegistrationTestData")
-//    public Object[][] getRegistrationTestData() {
-//        Object usersData[][] = TestUtil.getTestData(AppConstants.CONTACTS_SHEET_NAME);
-//        return usersData;
-//    }
+    @DataProvider(name = "getRegistrationTestData")
+    public Object[][] getRegistrationTestData() {
+        Object usersData[][] = TestUtil.getTestData(AppConstants.CONTACTS_SHEET_NAME);
+        return usersData;
+    }
 //
 //
 //
-//   @Ignore
-//   @Test(dataProvider = "getRegistrationTestData", priority = 2,retryAnalyzer = Retry.class)
-//    public void createNewUserTest(String email, String password, String passwordconf) {
-//        homePage.page.navigate("https://ztrain-web.vercel.app/auth/login");
-//        try{
-//            homePage.page.waitForURL("https://ztrain-web.vercel.app/auth/login",
-//                    new Page.WaitForURLOptions().setTimeout(10000));}
-//        catch (TimeoutError ignored){}
-//      homePage.clickRegisterButton(email, password, passwordconf);
-//        String i = homePage.getSiteLogoVision();
-//        switch (i) {
-//            case "ok":
-//                System.out.println("ok");
-//                break;
-//            case "no_logo_seen":
-//                Assert.fail("Impossible d'acceder à la page Home");
-//                break;
-//            case "short_Pswd":
-//                Assert.fail("Mot de passe trop court");
-//            case "same_Pswds":
-//                Assert.fail("Les mot de passe ne correspondent pas");
-//            case "used_IDs":
-//                Assert.fail("L'utilisateur existe déjà");
-//            case "invalidIDs":
-//                Assert.fail("L'adresse mail n'a pas un format valide");
-//                break;
-//        }
-//    }
+
+   @Test(dataProvider = "getRegistrationTestData", priority = 2)
+    public void createNewUserTest(String email, String password, String passwordconf) {
+
+        try{
+            homePage.page.navigate("https://ztrain-web.vercel.app/auth/login");
+            homePage.page.waitForURL("https://ztrain-web.vercel.app/auth/login",
+                    new Page.WaitForURLOptions().setTimeout(10000));}
+        catch (TimeoutError ignored){}
+      homePage.clickRegisterButton(email, password, passwordconf);
+        String i = homePage.getSiteLogoVision();
+        switch (i) {
+            case "ok":
+                System.out.println("ok");
+                break;
+            case "no_logo_seen":
+                Assert.fail("Impossible d'acceder à la page Home");
+                break;
+            case "short_Pswd":
+                Assert.fail("Mot de passe trop court");
+            case "same_Pswds":
+                Assert.fail("Les mot de passe ne correspondent pas");
+            case "used_IDs":
+                Assert.fail("L'utilisateur existe déjà");
+            case "invalidIDs":
+                Assert.fail("L'adresse mail n'a pas un format valide");
+                break;
+        }
+    }
 
 }

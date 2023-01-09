@@ -25,18 +25,21 @@ public class BaseTest {
 
     protected HomePage homePage;
 
+    public String UserName;
 
+    public String Password;
 
     @Parameters({ "browser","username","password" })
     @BeforeTest
-    public void setup(String browserName,String userName, String passWord) {
+    public void setup(String browserName,String username, String passWord) {
         pf = new PlaywrightFactory();
-        prop = pf.init_prop();
+            UserName = username;
+            Password = passWord;
+            prop = pf.init_prop();
 
         if (browserName != null) {
             prop.setProperty("browser", browserName);
-            prop.setProperty("username", userName);
-            prop.setProperty("password", passWord);
+
         }
 
         page = pf.initBrowser(prop);

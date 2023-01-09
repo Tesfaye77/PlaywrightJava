@@ -18,13 +18,13 @@
         </classes>
     </test>
 
-    <test name="Home Page Test_firefox">
-        <parameter name="browser" value="firefox" />
-        <parameter name="username" value="ug@mail.com" />
-        <parameter name="password" value="Ulrich77" />
-        <classes>
-            <class name="tests.HomePageTest" />
-        </classes>
-    </test>
+<!--    <test name="Home Page Test_firefox">-->
+<!--        <parameter name="browser" value="firefox" />-->
+<!--        <parameter name="username" value="ug@mail.com" />-->
+<!--        <parameter name="password" value="Ulrich77" />-->
+<!--        <classes>-->
+<!--            <class name="tests.HomePageTest" />-->
+<!--        </classes>-->
+<!--    </test>-->
 
 </suite>

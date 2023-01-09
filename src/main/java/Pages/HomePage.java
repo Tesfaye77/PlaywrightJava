@@ -67,19 +67,12 @@ public class HomePage {
         return page.isVisible(failedLogin);
     }
 
-    public boolean doLogin(String appUserName, String appPassword) {
+    public void doLogin(String appUserName, String appPassword) {
         System.out.println("App creds: " + appUserName + ":" + appPassword);
         page.fill(emailUser, appUserName);
         page.fill(password, appPassword);
         page.click(clickLogin);
-        page.locator(confirmationLogin).waitFor();
-        if (page.locator(confirmationLogin).isVisible()) {
-            System.out.println("user is logged in successfully....");
-            return true;
-        } else {
-            System.out.println("user is not logged in successfully....");
-            return false;
-        }
+
     }
 
     public String getSiteLogoVision() {

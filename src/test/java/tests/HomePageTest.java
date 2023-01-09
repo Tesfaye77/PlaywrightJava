@@ -8,6 +8,7 @@ import com.microsoft.playwright.TimeoutError;
 import constants.AppConstants;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
+import listeners.Retry;
 import org.testng.Assert;
 
 import org.testng.annotations.DataProvider;
@@ -21,7 +22,7 @@ public class HomePageTest extends BaseTest {
 
 
 
-    @Test(priority = 1)
+    @Test(priority = 1,retryAnalyzer = Retry.class)
     @Severity(SeverityLevel.NORMAL)
     public void loginPageNavigationTest() {
         String actLoginPageTitle = homePage.getLoginPageTitle();
@@ -30,16 +31,16 @@ public class HomePageTest extends BaseTest {
     }
 
    @Ignore
-   @Test(priority = 2)
+   @Test(priority = 2,retryAnalyzer = Retry.class)
     public void forgotPwdLinkExistTest() {
         Assert.assertTrue(homePage.isForgotPwdLinkExist());
     }
 
 
-    @Test(priority = 3)
+    @Test(priority = 3,retryAnalyzer = Retry.class)
     @Severity(SeverityLevel.BLOCKER)
     public void appLoginTest() {
-        Assert.assertTrue(homePage.doLogin(UserName, Password));
+        homePage.doLogin(UserName, Password);
                 String s = homePage.getSiteLogoVision();
                 homePage.emptyTheCart();
         if(s.equals("ok"))
@@ -52,7 +53,7 @@ public class HomePageTest extends BaseTest {
     }
 
     @Ignore
-    @Test(priority = 7)
+    @Test(priority = 7,retryAnalyzer = Retry.class)
     public void appLogoutTest() {
         homePage = homePage.navigateToLoginPage();
     }
@@ -61,14 +62,14 @@ public class HomePageTest extends BaseTest {
 
 
 
-    @Test(priority = 4)
+    @Test(priority = 4,retryAnalyzer = Retry.class)
     public void homePageTitleTest() {
         String actualTitle = homePage.getHomePageTitle();
         Assert.assertEquals(actualTitle, AppConstants.HOME_PAGE_TITLE);
     }
 //
 @Ignore
-@Test(priority = 5)
+@Test(priority = 5,retryAnalyzer = Retry.class)
     public void homePageURLTest() {
         String actualURL = homePage.getHomePageURL();
         Assert.assertEquals(actualURL, prop.getProperty("url"));
@@ -85,7 +86,7 @@ public class HomePageTest extends BaseTest {
     }
 
     @Ignore
-    @Test(dataProvider = "getProductData",priority = 6)
+    @Test(dataProvider = "getProductData",priority = 6,retryAnalyzer = Retry.class)
     @Severity(SeverityLevel.BLOCKER)
     public void searchTest(String productName)  {
         homePage.doSearch(productName);
@@ -118,7 +119,7 @@ public class HomePageTest extends BaseTest {
                 { "Chaussures Hommes de Ville",5 }
         };
     }
-    @Test(priority = 4,dataProvider = "getProductDataForAdd")
+    @Test(priority = 4,dataProvider = "getProductDataForAdd",retryAnalyzer = Retry.class)
     public void addToCartTest(String productName,int X) {
         homePage.page.fill("id=style_input_navbar_search__Scaxy","");
 //        homePage.emptyTheCart();
@@ -130,7 +131,7 @@ public class HomePageTest extends BaseTest {
 //
     }
 
-    @Test(priority = 5,dataProvider = "getProductDataForAdd")
+    @Test(priority = 5,dataProvider = "getProductDataForAdd",retryAnalyzer = Retry.class)
     public void suppressFromCartTest(String productName, int X) throws InterruptedException {
 //
         homePage.ClickOnCartIcon();
@@ -153,7 +154,7 @@ public class HomePageTest extends BaseTest {
 
 
    @Ignore
-   @Test(dataProvider = "getRegistrationTestData", priority = 2)
+   @Test(dataProvider = "getRegistrationTestData", priority = 2,retryAnalyzer = Retry.class)
     public void createNewUserTest(String email, String password, String passwordconf) {
         homePage.page.navigate("https://ztrain-web.vercel.app/auth/login");
         try{

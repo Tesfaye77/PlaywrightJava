@@ -11,6 +11,7 @@ import org.testng.annotations.BeforeSuite;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.nio.file.Paths;
+import java.util.Date;
 
 
 public class AllureReportListener implements ITestListener {
@@ -23,15 +24,9 @@ public class AllureReportListener implements ITestListener {
     public void saveScreen(Page page) {
         Allure.addAttachment("screenshot",
                 new ByteArrayInputStream((page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("images/example.png"))))));
+        Allure.addAttachment("Données supplémentaires: ", String.valueOf("Heure de fin du test "+ new Date().toString()));
     }
 
-//    Browser browser;
-//    public void saveVideos(BrowserContext context) {
-//        Allure.addAttachment("screenvidéo",
-//                (InputStream) (context = browser.newContext(new Browser.NewContextOptions()
-//                                        .setRecordVideoDir(Paths.get("videos/"))
-//                                        .setRecordVideoSize(640, 480))));
-//    }
 
 
 
@@ -51,21 +46,25 @@ public class AllureReportListener implements ITestListener {
     public void onStart(ITestContext iTestContext) {
         System.out.println("I am in onStart method " + iTestContext.getName());
         iTestContext.setAttribute("Page", PlaywrightFactory.getPage());
+        Allure.addAttachment("Données supplémentaires: ", String.valueOf("Heure de fin du test "+ new Date().toString()));
     }
 
     @Override
     public void onFinish(ITestContext iTestContext) {
         System.out.println("I am in onFinish method " + iTestContext.getName());
+        Allure.addAttachment("Données supplémentaires: ", String.valueOf("Heure de fin du test "+ new Date().toString()));
     }
 
     @Override
     public void onTestStart(ITestResult iTestResult) {
         System.out.println("I am in onTestStart method " + getTestMethodName(iTestResult) + " start");
+        Allure.addAttachment("Données supplémentaires: ", String.valueOf("Heure de fin du test "+ new Date().toString()));
     }
 
     @Override
     public void onTestSuccess(ITestResult iTestResult) {
         System.out.println("I am in onTestSuccess method " + getTestMethodName(iTestResult) + " succeed");
+        Allure.addAttachment("Données supplémentaires: ", String.valueOf("Heure de fin du test "+ new Date().toString()));
     }
 
     @Override
@@ -80,16 +79,19 @@ public class AllureReportListener implements ITestListener {
         }
         // Save a log on allure.
         saveTextLog(getTestMethodName(iTestResult) + " failed and screenshot taken!");
+        Allure.addAttachment("Données supplémentaires: ", String.valueOf("Heure de fin du test "+ new Date().toString()));
     }
 
     @Override
     public void onTestSkipped(ITestResult iTestResult) {
         System.out.println("I am in onTestSkipped method " + getTestMethodName(iTestResult) + " skipped");
+        Allure.addAttachment("Données supplémentaires: ", String.valueOf("Heure de fin du test "+ new Date().toString()));
     }
 
     @Override
     public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {
         System.out.println("Test failed but it is in defined success ratio " + getTestMethodName(iTestResult));
+        Allure.addAttachment("Données supplémentaires: ", String.valueOf("Heure de fin du test "+ new Date().toString()));
     }
 
 }

@@ -29,8 +29,8 @@ pipeline
                 stage('Regression Automation Test') {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                            sh"echo TEST"
-                             sh "mvn clean test "
+                             bat	"echo TEST"
+                             bat "mvn clean test"
 
 
 

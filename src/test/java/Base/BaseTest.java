@@ -1,4 +1,4 @@
-package Bases;
+package Base;
 
 import Factory.PlaywrightFactory;
 import Pages.HomePage;

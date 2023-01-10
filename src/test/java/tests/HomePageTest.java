@@ -1,7 +1,7 @@
 package tests;
 
 import Util.TestUtil;
-import Bases.BaseTest;
+import Base.BaseTest;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;

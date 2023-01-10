@@ -23,7 +23,7 @@ public class TestUtil {
         }
     }
 
-    public static void mediumWait(){
+    public static void mediumWat(){
         try {
             Thread.sleep(AppConstants.MEDIUM_WAIT);
         } catch (InterruptedException e) {
